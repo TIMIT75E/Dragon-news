@@ -4,7 +4,7 @@ import user from '../assets/user.png'
 
 const Navbar = () => {
     return (
-        <div className='max-w-5xl mx-auto text-center mt-10 flex justify-between items-center'>
+        <div className='w-11/12 mx-auto text-center mt-10 flex justify-between items-center'>
             <div className=""></div>
             <div className="nav">
                 <ul className='flex gap-5 text-accent'>
