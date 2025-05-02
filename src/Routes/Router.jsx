@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router";
 import Home from "../Layouts/Home";
 import Homes from "../Pages/Homes";
 import CategortNews from "../Pages/CategortNews";
+import Error from "../Pages/Error";
 
 
 
@@ -26,7 +27,7 @@ const router = createBrowserRouter(
         },
         {
             path:"/*",
-            element: <h1>error</h1>
+            Component:Error
         },
     ]
 )

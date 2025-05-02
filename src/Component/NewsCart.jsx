@@ -27,7 +27,7 @@ const NewsCart = ({ news }) => {
         : 'Unknown date';
 
     return (
-        <div className="shadow-2xl rounded-lg p-4 shadow-sm space-y-4">
+        <div className="shadow-2xl rounded-lg p-4 shadow-sm space-y-4 mx-3">
             {/* Header */}
             <div className="bg-base-200 p-4 rounded-md flex justify-between items-center">
                 <div className="flex items-center gap-3">
