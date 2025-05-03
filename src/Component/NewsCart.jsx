@@ -6,6 +6,7 @@ import {
     FaShareAlt,
     FaRegBookmark
 } from 'react-icons/fa';
+import { Link } from 'react-router';
 
 const NewsCart = ({ news }) => {
     const {
@@ -14,7 +15,8 @@ const NewsCart = ({ news }) => {
         author,
         details,
         rating,
-        total_view
+        total_view,
+        id
     } = news;
 
     // Safely extract and format published date
@@ -59,10 +61,10 @@ const NewsCart = ({ news }) => {
             {/* Details */}
             <p className="text-sm text-gray-600">
                 {details.slice(0, 200)}...
-                <span className="text-orange-500 font-semibold cursor-pointer">
+                <Link to= {`/news-details/${id}`} className="text-orange-500 font-semibold cursor-pointer">
                     {' '}
                     Read More
-                </span>
+                </Link>
             </p>
 
             {/* Footer */}

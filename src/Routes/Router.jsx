@@ -6,6 +6,9 @@ import Error from "../Pages/Error";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import AuthLayout from "../Layouts/AuthLayout";
+import NewsDetails from "../Pages/NewsDetails";
+import PrivateRoute from "../Provider/PrivateRoute";
+import NewsDetailsCard from "../Component/NewsDetailsCart";
 
 
 
@@ -31,8 +34,15 @@ const router = createBrowserRouter(
             ]
         },
         {
-            path: "/news",
-            element: <h1>News layout</h1>
+            path: "/news-details/:id",
+            element:<PrivateRoute>
+                <NewsDetails></NewsDetails>
+            </PrivateRoute>,
+            loader: async ({ params }) => {
+                const res = await fetch('/news.json');
+                const data = await res.json();
+                return data.find(item => item.id === params.id);
+              }
         },
         {
             path: "/*",
