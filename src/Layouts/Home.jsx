@@ -9,12 +9,12 @@ import RightAside from '../Component/HomeLayout/RightAside';
 const Home = () => {
     return (
         <div>
-            <header >
+            <header  >
                 <Header></Header>
                 <section className='w-11/12 mx-auto'>
                     <LatestNews></LatestNews>
                 </section>
-                <section>
+                <section >
                     <Navbar></Navbar>
                 </section>
             </header>
