@@ -9,7 +9,7 @@ const Navbar = () => {
 
 
     const handelLogOut=()=>{
-        console.log("user trying to log out");
+        // console.log("user trying to log out");
         signOutUser()
         .then(()=>{
             alert("You Loging Out From The Site")
@@ -20,8 +20,8 @@ const Navbar = () => {
 
     return (
         <div className='w-11/12 mx-auto text-center flex justify-between items-center mb-10 '>
-            <div className="">
-                {user && user.email}
+            <div className="font-bold text-lg">
+                {user && user.displayName}
             </div>
             <div className="nav">
                 <ul className='flex gap-5 text-accent'>
@@ -31,7 +31,9 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="login flex gap-4">
-                <img src={users} alt="" />
+                {
+                    user? <img src={user.photoURL} className='w-12 h-12 rounded-full' alt="" /> : <img src={users} className='' alt="" />
+                }
                 {
                     user? <button onClick={handelLogOut} className='btn btn-primary text-2xl font-bold py-3 px-8'>Log Out</button> : <Link to="/auth/login" className='btn btn-primary text-2xl font-bold py-3 px-8 '>Login</Link>
                 }

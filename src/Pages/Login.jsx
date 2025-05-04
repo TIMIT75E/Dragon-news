@@ -1,10 +1,11 @@
-import React, { use } from 'react';
+import React, { use, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../Provider/AuthContext';
 
 const Login = () => {
 
-    const { signUser } = use(AuthContext); 
+    const { signUser } = use(AuthContext);
+    const [error, setError] = useState("");
     const Navigate = useNavigate();
     const location = useLocation();
 
@@ -15,7 +16,7 @@ const Login = () => {
 
         const email = e.target.email.value;
         const password = e.target.password.value;
-        console.log(email, password);
+        // console.log(email, password);
 
 
 
@@ -27,6 +28,8 @@ const Login = () => {
             })
             .catch(error => {
                 console.log(error);
+                const errorCode = error.code;
+                setError(errorCode)
             })
 
 
@@ -44,10 +47,13 @@ const Login = () => {
                     <div className="card-body">
                         <form onSubmit={handedlLogin} className="fieldset">
                             <label className="font-semibold">Email address</label>
-                            <input type="email" name='email' className="input" placeholder="Enter your email address" />
+                            <input type="email" name='email' className="input" placeholder="Enter your email address" required />
                             <label className="font-semibold">Password</label>
-                            <input type="password" name='password' className="input" placeholder="Enter your password" />
+                            <input type="password" name='password' className="input" placeholder="Enter your password" required />
                             <div><a className="link link-hover">Forgot password?</a></div>
+                            {
+                                error && <p className='text-red-500 text-xs'>{error}</p>
+                            }
                             <button className="btn btn-neutral mt-4">Login</button>
                         </form>
                         <p>New To This Site? please <Link className='text-red-400 underline' to="/auth/register">Register</Link></p>
